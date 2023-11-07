@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:05:44 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/04 11:55:39 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:20:15 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 
 char *ft_strrchr(const char *s, int c)
 {
-    int i;
-    int pos;
+    int i = 0;
+    int len_s;
 
-    i = 0;
-    while(s[i])
+    len_s = ft_strlen(s);
+    while(len_s >= i)
     {
-        if(s[i] == (unsigned char)c)
-            pos = i;
-        i++;
-    }
-    if(s[pos] == (unsigned char)c)
-        return ((char*)(s + pos));
-    return (NULL);
+        if(s[len_s] == (unsigned char)c)
+            return ((char*)(s + len_s));
+        //s++;
+        len_s--;    
+    }  
+    return NULL;
 }
 
 // int main() {

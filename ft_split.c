@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 19:49:11 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/05 17:20:17 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:59:13 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,32 +46,38 @@ int nbr_strings(char const *s, char c)
 
 char **ft_split(char const *s, char c)
 {
-    int i = 0;
-    
+    int i;
+    int j;
     char **ptr;
-
-    ptr = (char**)malloc(sizeof(char*) * nbr_strings(s,c));
+    int size = nbr_strings(s, c);
+    ptr = (char**)malloc(sizeof(char*) * (size + 1));
     if(ptr == NULL)
-       return (NULL);
+        return (NULL);
 
-    // while(i < len_char(s, c) )
-    // {
-    //     ptr[i] = (char*)malloc(sizeof(char) * nbr_strings(s, c));
-    //     i++;
-    // }
+    // int i = 0;
+    // while(*s != '\0' && *s == c)
+    //     s++;
     
-    i = 0;
-    int j = 0;
-    int k;
-    while(i < nbr_strings(s,c) && s[i] != '\0')
+    j = 0;
+    while(j < size)
     {
-        if(s[i] == c)
-          j = k;
-        ptr[i] = ft_substr(s, j + 1, nbr_strings(s + i,c));
-        i++;
-        j++; 
-    }   
+        while(*s != '\0' && *s == c)
+            s++;
+        i = 0;
+        while(s[i] != '\0' && s[i] != c)
+            i++;
+        ptr[j] = ft_substr(s, 0, i);
+        if(ptr[j] == NULL)
+        {
+             free(ptr[j]);
+           free(ptr);
+        }
+        s = s + i;
+        j++;
+    }
+    ptr[j] = '\0';
     return (ptr);
+    
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 18:39:21 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/06 12:23:13 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/07 10:50:32 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,27 @@ int number_digits(int n)
     }
     return (len);
 }
-char *check_min(int n)
-{
+// char *check_min(int n)
+// {
     
-    const char *str="-2147483648";
-    if(n == -2147483648)
-    {
-       char *ptr;
-       ptr = (char*)malloc(12);
-       if(ptr == NULL)
-         return NULL;
-       int i =0;
-       while(*str)
-       {
-        ptr[i]  = *str;
-        i++;
-        str++;
-       } 
-       ptr[i] = '\0';
-       return (ptr);
-    }
-}
+//     const char *str="-2147483648";
+//     if(n == -2147483648)
+//     {
+//        char *ptr;
+//        ptr = (char*)malloc(12);
+//        if(ptr == NULL)
+//          return NULL;
+//        int i =0;
+//        while(*str)
+//        {
+//         ptr[i]  = *str;
+//         i++;
+//         str++;
+//        } 
+//        ptr[i] = '\0';
+//        return (ptr);
+//     }
+// }
 
 char *ft_itoa(int n)
 {
@@ -67,6 +67,7 @@ char *ft_itoa(int n)
     //   return ft_strdup("0");
     if(n < 0)
         ptr[0] = '-';
+        
     ptr[size] ='\0';
     // while(n != 0)
     // {
@@ -77,7 +78,7 @@ char *ft_itoa(int n)
     while(n != 0)
     {
         size--;
-        if(n <0)
+        if(n < 0)
         ptr[size] = (n%10 * (-1)) + '0';
         else 
            ptr[size] = (n%10) + '0';

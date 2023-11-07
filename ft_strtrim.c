@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:32:05 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/06 18:53:43 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/06 19:44:49 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@
 //     printf("substring : %zu\n",ft_strlen(res));
 // }
 
- int check_char(const char *s1, char c)
+static int check_char(const char *s1, char c)
 {
     while(*s1)
         {
