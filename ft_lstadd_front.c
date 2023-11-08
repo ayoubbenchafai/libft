@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 22:05:16 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/08 11:46:18 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/08 22:04:35 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,9 @@
 
 void ft_lstadd_front(t_list **lst, t_list *new)
 {
-    
+    if(*lst != NULL)
+    {
+        new -> content= *lst;
+        *lst = new;
+    }
 }
