@@ -6,25 +6,13 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 22:02:21 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/04 11:34:18 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:45:57 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 #include <string.h>
-size_t  ft_strlen(const char *s)
-{
-    size_t len;
-
-    len = 0;
-    while (*s)
-    {
-        len++;
-        s++;
-    }
-    return (len);
-}
 size_t ft_strlcat(char *dest, const char *src, size_t dstsize)
 {
     size_t len_dest;

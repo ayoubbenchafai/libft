@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:28:45 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/06 13:05:07 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:00:07 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
         return ft_strdup("");
     if (len > (s_length - start)) 
         len = s_length - start;
-    ptr = (char *)malloc(sizeof(char) * (len + 1));
+    ptr = (char*)malloc(sizeof(char) * (len + 1));
     if(ptr == NULL)
        return (NULL);
     i = 0;   

@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:32:05 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/06 19:44:49 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:56:38 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,28 +63,6 @@
 //         }
 //     return(0);
 // }
-// char *ft_strtrim(char const *s1, char const *set)
-// { 
-//     int begin = 0;
-//     int end = ft_strlen(s1) - 1;
-//     if(s1 == NULL)
-//          return NULL;
-//     while(s1[begin] && check_char(s1, *set))
-//     {
-//         begin++;
-//         end--;
-//         set++;
-//     }
-//     int size = end - begin + 1;
-//     char *ptr = malloc(size + 1);
-//     if(ptr == NULL)
-//          return NULL;
-//     int i = 0;
-//     while(begin <=  end)
-//             ptr[i++] = s1[begin++];
-//     ptr[i] = '\0';
-//     return (ptr); 
-// }
 // int main(void)
 // {
 //     char const s1[]="cb_ali_cb_";
@@ -94,34 +72,62 @@
 //     printf("substring : %zu\n",ft_strlen(res));
 // }
 
-static int check_char(const char *s1, char c)
+static int check_char(const char *set, char c)
 {
-    while(*s1)
-        {
-            if(*s1 == c)
-               return (1);
-            s1++;
-        }
-    return(0);
+    while (*set)
+    {
+        if (*set == c)
+            return (1);
+        set++;
+    }
+    return (0);
 }
+// hada s7i7
+// char *ft_strtrim(const char *s1, const char *set)
+// { 
+//     int begin = 0;
+//     int end = ft_strlen(s1) - 1;
+//     while(s1[begin] && check_char(set,s1[begin]))
+//         begin++;
+//      while(s1[end] && check_char(set,s1[end]))
+//         end--;
+//     int size = end - begin + 1;
+    
+//     if(begin > end)
+//       return (ft_strdup(""));
+//     char *ptr = (char *)malloc(size + 1);
+//     if(ptr == NULL)
+//          return NULL;
+//     int i = 0;
+//     while(i < size)
+//             ptr[i++] = s1[begin++];
+//     ptr[i] = '\0';
+//     return (ptr); 
+// }
+
 char *ft_strtrim(const char *s1, const char *set)
-{ 
+{
+    if (s1 == NULL || set == NULL)
+        return (NULL);
+
     int begin = 0;
     int end = ft_strlen(s1) - 1;
-    while(s1[begin] && check_char(set,s1[begin]))
+
+    while (s1[begin] && check_char(set, s1[begin]))
         begin++;
-     while(s1[end] && check_char(set,s1[end]))
+    while (end >= 0 && check_char(set, s1[end]))
         end--;
+
     int size = end - begin + 1;
-    
-    // if(begin > end)
-    //   return (ft_strdup(""));
-    // char *ptr = (char *)malloc(size + 1);
-    // if(ptr == NULL)
-    //      return NULL;
-    // int i = 0;
-    // while(i < size)
-    //         ptr[i++] = s1[begin++];
-    // ptr[i] = '\0';
-    return (ft_substr(s1,begin,size)); 
+
+    if (begin > end)
+        return (ft_strdup("")); 
+    char *ptr = (char *)malloc(size + 1);
+    if (ptr == NULL)
+        return (NULL);
+    int i =0;
+    while(i < size)
+            ptr[i++] = s1[begin++];
+    ptr[size] = '\0';
+    return (ptr);
 }

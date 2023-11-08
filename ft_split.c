@@ -6,22 +6,11 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 19:49:11 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/07 22:04:39 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:22:00 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int len_char(char const *s, char c)
-{
-    int len;
-
-    len = 0;
-    while(*s != '\0' && *s != c)
-       len++;
-    return (len);   
-}
-
 int nbr_strings(char const *s, char c)
 {
     int len,i;
@@ -41,9 +30,7 @@ int nbr_strings(char const *s, char c)
         i++;
     }
     return (len);
-
 }
-
 char **ft_split(char const *s, char c)
 {
     int i;
@@ -54,9 +41,6 @@ char **ft_split(char const *s, char c)
     if(ptr == NULL)
         return (NULL);
 
-    // int i = 0;
-    // while(*s != '\0' && *s == c)
-    //     s++;
     
     j = 0;
     while(j < size)
@@ -67,34 +51,23 @@ char **ft_split(char const *s, char c)
         while(s[i] != '\0' && s[i] != c)
             i++;
         ptr[j] = ft_substr(s, 0, i);
-        if(ptr[j] == NULL)
+        if(!ptr[j])
         {
-             free(ptr[j]);
-           free(ptr);
+            while(j > 0)
+            {
+                j--;
+                free(ptr[j]);
+            }
+            free(ptr);
         }
+        // if(ptr[j] == NULL)
+        // {
+        //      free(ptr[j]);
+        //    free(ptr);
+        // }
         s = s + i;
         j++;
     }
     ptr[j] = 0;
     return (ptr);
-    
 }
-
-
-
-
-// char **malloc2d(int i,int j)
-// {
-//     char **ptr;
-
-//     ptr = (char**)malloc(sizeof(char*) * i);
-
-//     int c =0;
-//     while(c < j)
-//         {
-//             ptr[c] = (char*)malloc(sizeof(char) * j);
-//             c++;
-//         }
-//     return (ptr);
-// }
-// int the main it must free the ptr  free(ptr);
