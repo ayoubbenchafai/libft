@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 19:49:11 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/08 13:22:00 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:21:49 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,31 @@ int nbr_strings(char const *s, char c)
     }
     return (len);
 }
+int nbstr(const char *s, char c)
+{
+    int len;
+
+    len = 0;
+    while (*s)
+    {
+        while (*s && *s == c)
+            s++;
+        if (*s)
+            len++;
+        while (*s && *s != c)
+            s++;
+    }   
+    return (len); 
+}
 char **ft_split(char const *s, char c)
 {
     int i;
     int j;
     char **ptr;
-    int size = nbr_strings(s, c);
+
+    if (!s)
+        return 0;
+    int size = nbstr(s, c);
     ptr = (char**)malloc(sizeof(char*) * (size + 1));
     if(ptr == NULL)
         return (NULL);
@@ -59,6 +78,7 @@ char **ft_split(char const *s, char c)
                 free(ptr[j]);
             }
             free(ptr);
+            return (0);
         }
         // if(ptr[j] == NULL)
         // {
