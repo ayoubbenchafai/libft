@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 19:49:11 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/08 16:21:49 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:33:23 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,6 @@ char **ft_split(char const *s, char c)
             free(ptr);
             return (0);
         }
-        // if(ptr[j] == NULL)
-        // {
-        //      free(ptr[j]);
-        //    free(ptr);
-        // }
         s = s + i;
         j++;
     }
