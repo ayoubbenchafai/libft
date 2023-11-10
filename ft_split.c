@@ -6,7 +6,7 @@
 /*   By: aben-cha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:05:41 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/09 21:42:32 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:50:02 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,11 @@ static int	nbr_strings(const char *s, char c)
 	return (len);
 }
 
-char	**ft_split(char const *s, char c)
+static void	allocate_string(char **ptr, char const *s, char c, int size)
 {
-	int		i;
-	int		j;
-	char	**ptr;
-	int		size;
+	int	j;
+	int	i;
 
-	if (s == NULL)
-		return (0);
-	size = nbr_strings(s, c);
-	ptr = (char **)malloc(sizeof(char *) * (size + 1));
-	if (ptr == NULL)
-		return (0);
 	j = 0;
 	while (j < size)
 	{
@@ -54,16 +46,27 @@ char	**ft_split(char const *s, char c)
 		if (!ptr[j])
 		{
 			while (j > 0)
-			{
-				j--;
-				free(ptr[j]);
-			}
+				free(ptr[j--]);
 			free(ptr);
-			return (0);
+			return ;
 		}
 		s = s + i;
 		j++;
 	}
 	ptr[j] = 0;
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		size;
+	char	**ptr;
+
+	if (!s)
+		return (0);
+	size = nbr_strings(s, c);
+	ptr = (char **)malloc(sizeof(char *) * (size + 1));
+	if (ptr == NULL)
+		return (0);
+	loading(ptr, s, c, size);
 	return (ptr);
 }
