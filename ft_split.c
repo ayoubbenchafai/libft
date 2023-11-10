@@ -12,61 +12,66 @@
 
 #include "libft.h"
 
-static int	nbr_strings(const char *s, char c)
+static int    nbr_strings(const char *s, char c)
 {
-	int	len;
+    int    len;
 
-	len = 0;
-	while (*s)
-	{
-		while (*s && *s == c)
-			s++;
-		if (*s)
-			len++;
-		while (*s && *s != c)
-			s++;
-	}
-	return (len);
+    len = 0;
+    while (*s)
+    {
+        while (*s && *s == c)
+            s++;
+        if (*s)
+            len++;
+        while (*s && *s != c)
+            s++;
+    }
+    return (len);
 }
 
-static void	loading(char **ptr, char const *s, char c, int size)
+static void free_memory(char **ptr, int j)
 {
-	int	j;
-	int	i;
-
-	j = 0;
-	while (j < size)
-	{
-		while (*s != '\0' && *s == c)
-			s++;
-		i = 0;
-		while (s[i] != '\0' && s[i] != c)
-			i++;
-		ptr[j] = ft_substr(s, 0, i);
-		if (!ptr[j])
-		{
-			while (j > 0)
-				free(ptr[j--]);
-			free(ptr);
-			return ;
-		}
-		s = s + i;
-		j++;
-	}
-	ptr[j] = 0;
+    while (j > 0)
+        free(ptr[--j]);
+    free(ptr);
 }
 
-char	**ft_split(char const *s, char c)
+static char **loading(char const *s, char c, int size, int j)
 {
-	int		size;
-	char	**ptr;
+    int i;
+    char **ptr;
+    
+    ptr = (char **)malloc(sizeof(char *) * (size + 1));
+    if (!ptr)
+        return (0);
+    while (j < size) {
+        while (*s != '\0' && *s == c)
+            s++;
+        i = 0;
+        while (s[i] != '\0' && s[i] != c)
+            i++;
+        ptr[j] = ft_substr(s, 0, i);
+        if (!ptr[j])
+        {
+            free_memory(ptr, j);
+            return (0);
+        }
+        s += i;
+        j++;
+    }
+    ptr[j] = (0);
+    return ptr;
+}
 
-	if (!s)
-		return (0);
-	size = nbr_strings(s, c);
-	ptr = (char **)malloc(sizeof(char *) * (size + 1));
-	if (ptr == NULL)
-		return (0);
-	loading(ptr, s, c, size);
-	return (ptr);
+char **ft_split(char const *s, char c)
+{
+    int j;
+    int size;
+    if (!s)
+        return NULL;
+    j = 0;
+    size = nbr_strings(s, c);
+    char **ptr = loading(s, c, size, j);
+    
+    return ptr;
 }
