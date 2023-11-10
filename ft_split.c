@@ -6,7 +6,7 @@
 /*   By: aben-cha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:05:41 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/10 17:50:02 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/10 21:29:25 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	nbr_strings(const char *s, char c)
 	return (len);
 }
 
-static void	allocate_string(char **ptr, char const *s, char c, int size)
+static void	loading(char **ptr, char const *s, char c, int size)
 {
 	int	j;
 	int	i;
