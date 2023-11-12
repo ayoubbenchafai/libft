@@ -6,7 +6,7 @@
 /*   By: aben-cha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 22:07:32 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/09 22:21:22 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:08:27 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	int	min;
+	int	min_value;
 
-	min = -2147483648;
-	if (n == min)
+	min_value = -2147483648;
+	if (n == min_value)
 		write(fd, "-2147483648", 11);
 	else if (n < 0)
 	{
