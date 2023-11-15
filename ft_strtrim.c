@@ -6,7 +6,7 @@
 /*   By: aben-cha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:53:05 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/09 20:05:22 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:33:50 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	check_char(const char *set, char c)
 {
+	if (set == NULL)
+		return (0);
 	while (*set)
 	{
 		if (*set == c)
