@@ -6,7 +6,7 @@
 /*   By: aben-cha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:31:32 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/16 15:08:31 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:51:42 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int					i;
-	int					sign;
-	unsigned long long	result;
+	int				i;
+	int				sign;
+	unsigned long	result;
 
 	i = 0;
 	sign = 1;
