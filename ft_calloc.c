@@ -6,7 +6,7 @@
 /*   By: aben-cha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:35:52 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/16 18:00:57 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:20:56 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
-	size_t	over;
+	size_t	total_size;
 
-	over = count * size;
-	if ((count != 0) && (over / count) != size)
-		return (NULL);
+	if (count != 0 && size != 0) 
+	{
+		total_size = count * size;
+		if (total_size / count != size)
+			return (NULL);
+	}
 	ptr = malloc(count * size);
 	if (ptr == NULL)
 		return (NULL);
-	ft_bzero(ptr, count * size);
+	ft_memset(ptr, 0, count * size);
 	return (ptr);
 }
