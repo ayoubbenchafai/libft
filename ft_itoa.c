@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:42:47 by aben-cha          #+#    #+#             */
-/*   Updated: 2023/11/09 21:56:21 by aben-cha         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:17:18 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,22 @@ static int	number_digits(int n)
 
 char	*ft_itoa(int n)
 {
-	char	*ptr;
 	int		size;
+	char	*ptr;
 
 	size = number_digits(n);
-	ptr = (char *)malloc(size + 1);
-	if (ptr == NULL)
+	ptr = (char *)malloc(sizeof(char) * (size + 1));
+	if (!ptr)
 		return (NULL);
-	if (n == 0)
-	{
-		ptr[0] = '0';
-		ptr[1] = '\0';
-		return (ptr);
-	}
+	ptr[size] = '\0';
 	if (n < 0)
 		ptr[0] = '-';
-	ptr[size] = '\0';
+	if (n == 0)
+		ptr[0] = '0';
+	size--;
 	while (n != 0)
 	{
-		ptr[--size] = (n % 10 * ((n >= 0) - (n < 0))) + '0';
+		ptr[size--] = n % 10 * ((n >= 0) - (n < 0)) + '0';
 		n /= 10;
 	}
 	return (ptr);
